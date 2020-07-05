@@ -24,9 +24,33 @@ class Firebase {
 
   async register(name, email, password) {
     await this.auth.createUserWithEmailAndPassword(email, password);
-    return this.auth.currentUser.updateProfile({
-      displayName: name,
-    });
+    fetch("https://api.youthcomputing.ca/shop/new-user", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      mode: "cors",
+      cache: "no-cache",
+      body: JSON.stringify({
+        userId: this.auth.currentUser.uid,
+        userName: name,
+      }),
+    })
+      .then(async (response) => {
+        const data = await response.json();
+
+        // check for error response
+        if (!response.ok) {
+          // get error message from body or default to response status
+          const error = (data && data.message) || response.status;
+          return Promise.reject(error);
+        }
+
+        this.setState({ postId: data.id });
+      })
+      .catch((error) => {
+        console.error("There was an error!", error);
+      });
+
+    return this.auth.currentUser.updateProfile({});
   }
 
   isInitialized() {
@@ -41,13 +65,6 @@ class Firebase {
 
   getUid() {
     console.log(this.auth.currentUser.uid);
-  }
-
-  async getCurrentUserQuote() {
-    const quote = await this.db
-      .doc(`users_codedamn_video/${this.auth.currentUser.uid}`)
-      .get();
-    return quote.get("quote");
   }
 }
 

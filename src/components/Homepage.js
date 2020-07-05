@@ -4,6 +4,7 @@ import VerifiedUserOutlined from "@material-ui/icons/VerifiedUserOutlined";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
 import style from "./styles.css";
+import firebase from "../firebase";
 
 const styles = (theme) => ({
   main: {
@@ -30,7 +31,7 @@ const styles = (theme) => ({
 
 function HomePage(props) {
   const { classes } = props;
-
+  const id = "OZu2iuXWQ5TIoZcifdVeohKKgQm1";
   return (
     <main className={classes.main}>
       <Paper elevation={0.5} className={classes.paper}>

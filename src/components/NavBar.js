@@ -50,10 +50,16 @@ function NavBar(props) {
         >
           Sign In
         </Button>
+        <Button href="#">Link for YC website</Button>
+
+        <Button variant="danger">Danger</Button> <Button variant="info">Info</Button>{' '}
+        <Button as="input" type="submit" value="Submit" />{' '}        
       </Paper>
     </main>
   );
 }
 
 export default withStyles(styles)(NavBar);
+
+
 

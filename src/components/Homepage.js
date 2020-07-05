@@ -13,7 +13,6 @@ const styles = (theme) => ({
   },
   paper: {
     display: "flex",
-
     flex: 3,
     flexDirection: "row",
     height: 60,
@@ -36,7 +35,7 @@ function HomePage(props) {
     <main className={classes.main}>
       <Paper elevation={0.5} className={classes.paper}>
         <Typography component="h3" variant="h4">
-          YC Store
+          Hi Shawn
         </Typography>
 
         <Avatar className={classes.avatar}>

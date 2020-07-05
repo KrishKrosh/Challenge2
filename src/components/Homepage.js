@@ -35,7 +35,7 @@ function HomePage(props) {
     <main className={classes.main}>
       <Paper elevation={0.5} className={classes.paper}>
         <Typography component="h3" variant="h4">
-          Hi Shawn
+          Hi Krish
         </Typography>
 
         <Avatar className={classes.avatar}>

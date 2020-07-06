@@ -32,7 +32,7 @@ function NavBar(props) {
     <main className={classes.main}>
       <Paper elevation={0.5} className={classes.paper}>
         <Typography component="h3" variant="h4">
-          Hi Shawn
+          YC Store
         </Typography>
 
         <Avatar className={classes.avatar}>
@@ -50,9 +50,16 @@ function NavBar(props) {
         >
           Sign In
         </Button>
+        <Button href="#">Link for YC website</Button>
+
+        <Button variant="danger">Danger</Button> <Button variant="info">Info</Button>{' '}
+        <Button as="input" type="submit" value="Submit" />{' '}        
       </Paper>
     </main>
   );
 }
 
 export default withStyles(styles)(NavBar);
+
+
+

@@ -1,7 +1,7 @@
 import React from "react";
 import { CircularProgress } from "@material-ui/core";
 import Carousel from "react-bootstrap/Carousel";
-import style from "./styles.css";
+import "./styles.css";
 
 class Promotions extends React.Component {
   constructor() {

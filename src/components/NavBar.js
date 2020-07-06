@@ -50,16 +50,19 @@ function NavBar(props) {
         >
           Sign In
         </Button>
-        <Button href="#">Link for YC website</Button>
+        <Button href="#">Link for YC website</Button>{' '}
 
-        <Button variant="danger">Danger</Button> <Button variant="info">Info</Button>{' '}
+        <Button variant="danger"></Button> <Button variant="info">Info</Button>{' '}
         <Button as="input" type="submit" value="Submit" />{' '}        
+   
+        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+  
       </Paper>
     </main>
   );
 }
 
+
+
 export default withStyles(styles)(NavBar);
-
-
 

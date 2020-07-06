@@ -13,3 +13,20 @@
   float: right;
   padding-left: 1000;
 }
+
+.carouselImg {
+  height: 35em;
+  object-fit: cover;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25px;
+}
+.carouselWidth {
+  border-radius: 25px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

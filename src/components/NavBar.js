@@ -1,6 +1,5 @@
 import React from "react";
 import { Typography, Paper, Avatar, Button } from "@material-ui/core";
-import VerifiedUserOutlined from "@material-ui/icons/VerifiedUserOutlined";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
 
@@ -34,7 +33,6 @@ function NavBar(props) {
         <Typography component="h3" variant="h4">
           YC Store
         </Typography>
-
         <Avatar className={classes.avatar}>
           <Typography component="subtitle1" variant="subtitle2">
             1000
@@ -57,6 +55,11 @@ function NavBar(props) {
    
         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
   
+
+        <Button href="#">Link for YC website</Button>
+        <Button variant="danger">Danger</Button>{" "}
+        <Button variant="info">Info</Button>{" "}
+        <Button as="input" type="submit" value="Submit" />{" "}
       </Paper>
     </main>
   );
@@ -64,5 +67,8 @@ function NavBar(props) {
 
 
 
+
 export default withStyles(styles)(NavBar);
+
+
 

@@ -6,33 +6,12 @@ import { Link } from "react-router-dom";
 
 
 
-const styles = (theme) => ({
-  main: {
-    width: "auto",
-    display: "block", 
-  },
-  paper: {
-    display: "flex",
-    flex: 3,
-    flexDirection: "row",
-    height: 60,
-    padding: `${theme.spacing.unit * 1}px ${theme.spacing.unit * 3}px ${
-      theme.spacing.unit * 1
-    }px ${theme.spacing.unit * 3}px`,
-  },
-  avatar: {
-    backgroundColor: theme.palette.secondary.main,
-    margin: 2,
-    float: "right",
-  },
-  submit: {},
-});
 
 function NavBar(props) {
   const { classes } = props;
   return (
     <main className={classes.main}>
-      <Paper elevation={0.5} className={classes.paper} position="fixed">
+      <Paper elevation={0.5} className={classes.paper} position="sticky">
         <Typography component="h3" variant="h4">
           YC Store
         </Typography>

@@ -9,10 +9,11 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 300,
+    maxWidth: 200,
+    height: 300,
   },
   media: {
-    height: 140,
+    height: 100,
   },
 });
 
@@ -24,7 +25,7 @@ export default function MediaCard() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image="https://images.samsung.com/is/image/samsung/ca-uhdtv-nu7090-un50nu6900fxzc-frontblack-115122572?$PD_GALLERY_L_JPG$"
           title="Contemplative Reptile"
         />
         <CardContent>

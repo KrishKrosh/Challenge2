@@ -4,7 +4,12 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 import "./styles.css";
+
+
+const styles = (theme) => ({});
 
 export default function MediaCard() {
   return (
@@ -24,6 +29,18 @@ export default function MediaCard() {
             </Typography>
           </CardContent>
         </CardActionArea>
+        <CardActionArea>
+          <Button variant="primary" size="lg" active
+          type="submit"
+          variant="contained"
+          color="primary"
+          component={Link}
+          to="/"
+          className={styles.submit}
+        > Redeem Now
+        </Button>
+        </CardActionArea>
+
       </Card>
     </div>
   );

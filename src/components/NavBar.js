@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect, useState, useRef } from "react";
 import { Typography, Paper, Avatar, Button } from "@material-ui/core";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";

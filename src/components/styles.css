@@ -30,10 +30,9 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.button {
-  background: red;
-  border-radius: 8px;
-  color: white;
+.redeem {
+  text-align: center;
+  color: rgb(47, 0, 255);
 }
 
 *.card :focus {
@@ -49,3 +48,4 @@
 .cardImg {
   height: auto;
 }
+

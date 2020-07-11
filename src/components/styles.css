@@ -37,6 +37,7 @@
 .card {
   height: auto;
   width: 400px;
+  margin: 50px;
 }
 
 .cardImg {

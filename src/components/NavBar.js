@@ -1,12 +1,15 @@
 import React from "react";
+import { useEffect, useState, useRef } from "react"
 import { Typography, Paper, Avatar, Button } from "@material-ui/core";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
 
+
+
 const styles = (theme) => ({
   main: {
     width: "auto",
-    display: "block", // Fix IE 11 issue.
+    display: "block", 
   },
   paper: {
     display: "flex",
@@ -29,7 +32,7 @@ function NavBar(props) {
   const { classes } = props;
   return (
     <main className={classes.main}>
-      <Paper elevation={0.5} className={classes.paper}>
+      <Paper elevation={0.5} className={classes.paper} position="fixed">
         <Typography component="h3" variant="h4">
           YC Store
         </Typography>
@@ -48,17 +51,15 @@ function NavBar(props) {
         >
           Sign In
         </Button>
-        <Button href="#">Link for YC website</Button>{' '}
 
-        <Button as="input" type="submit" value="Submit" />{' '}        
+               
    
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg"/>
   
       
-        <Button as="input" type="submit" value="Submit" />{" "}
       </Paper>
     </main>
-    
+
   );
 }
 

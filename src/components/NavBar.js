@@ -1,11 +1,30 @@
 import React from "react";
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef } from "react";
 import { Typography, Paper, Avatar, Button } from "@material-ui/core";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
 
-
-
+const styles = (theme) => ({
+  main: {
+    width: "auto",
+    display: "block",
+  },
+  paper: {
+    display: "flex",
+    flex: 3,
+    flexDirection: "row",
+    height: 60,
+    padding: `${theme.spacing.unit * 1}px ${theme.spacing.unit * 3}px ${
+      theme.spacing.unit * 1
+    }px ${theme.spacing.unit * 3}px`,
+  },
+  avatar: {
+    backgroundColor: theme.palette.secondary.main,
+    margin: 2,
+    float: "right",
+  },
+  submit: {},
+});
 
 function NavBar(props) {
   const { classes } = props;
@@ -31,21 +50,10 @@ function NavBar(props) {
           Sign In
         </Button>
 
-               
-   
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg"/>
-  
-      
+        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
       </Paper>
     </main>
-
   );
 }
 
-
-
-
 export default withStyles(styles)(NavBar);
-
-
-

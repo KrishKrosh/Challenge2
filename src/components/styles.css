@@ -15,10 +15,9 @@
 }
 
 .carouselImg {
-  height: 35em;
+  height: 54vh;
   object-fit: cover;
-
-  display: block;
+  width: auto;
   margin-left: auto;
   margin-right: auto;
   border-radius: 25px;

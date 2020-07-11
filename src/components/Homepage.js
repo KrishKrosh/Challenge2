@@ -1,14 +1,14 @@
 import React from "react";
 import NavBar from "./NavBar.js";
 import Promotions from "./Promotions.js";
-import MediaCard from "./Store.js"
+import MediaCard from "./Store.js";
 function HomePage(props) {
   return (
-    <React.Fragment>
+    <div>
       <NavBar />
       <Promotions />
-      <MediaCard/>
-    </React.Fragment>
+      <MediaCard />
+    </div>
   );
 }
 

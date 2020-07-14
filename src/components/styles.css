@@ -9,6 +9,25 @@
   align-items: center;
 }
 
+.navbarPaper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 60px;
+  width: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.navbarItem {
+  width: 200px;
+}
+.navbarSearch {
+  width: 50em;
+}
+
 .right {
   float: right;
   padding-left: 1000;

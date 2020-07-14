@@ -34,10 +34,14 @@ class Example extends Component {
           variant="contained"
           color="primary"
           component={Link}
+          marginLeft={10}
+          marginRight={10}
           to="/"
         >
-          Laptops
+          Laptops         <br/> .
         </Button>
+
+        <br/>
         <Button
           variant="contained"
           color="primary"

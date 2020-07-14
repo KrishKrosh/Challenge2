@@ -1,19 +1,76 @@
-import React from "react";
+
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import HorizontalScroller from 'react-horizontal-scroll-container';
+import React, { Component } from 'react';
 
-const styles = (theme) => ({
-  button: {},
-});
 
-function Categories() {
-  return (
-    <div>
-      <br/>
-
-      
-      <Button
+class Example extends Component {
+  render() {
+    return (
+      <div>
+        <br/>
+        <HorizontalScroller>
+        <Button
+          variant="contained"
+          color="primary"
+          component={Link}
+          to="/"
+          padding="20px"
+        >
+          Laptops
+        </Button>
+        <br/>
+        <Button
+          variant="contained"
+          color="primary"
+          component={Link}
+          to="/"
+        >
+          Laptops
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          component={Link}
+          to="/"
+        >
+          Laptops
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          component={Link}
+          to="/"
+        >
+          Laptops
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          component={Link}
+          to="/"
+        >
+          Laptops
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          component={Link}
+          to="/"
+        >
+          Laptops
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          component={Link}
+          to="/"
+        >
+          Laptops
+        </Button>
+        <Button
           variant="contained"
           color="primary"
           component={Link}
@@ -22,11 +79,14 @@ function Categories() {
           Laptops
         </Button>
 
-
-
-    </div>
-  );
+          
+        </HorizontalScroller>
+      </div>
+    );
+  }
 }
 
 
-export default Categories;
+
+
+export default Example;

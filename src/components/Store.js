@@ -35,28 +35,7 @@ function MediaCard() {
           </CardActionArea>
       </Card>
 
-      <br/>
-      <Card className="card">
-        <CardActionArea>
-          <CardContent>
-            <CardMedia
-              component="img"
-              image="https://images.samsung.com/is/image/samsung/ca-uhdtv-nu7090-un50nu6900fxzc-frontblack-115122572?$PD_GALLERY_L_JPG$"
-            />
-            <Typography gutterBottom variant="h5" component="h2">
-              TV
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              2000 points
-            </Typography>
-            <br/>
-            <Typography variant="body1" component="h6" className="redeem">
-              Redeem Now
-            </Typography>
-          </CardContent>
-          </CardActionArea>
-      </Card>
-      <br/>
+      
     </div>
   );
 }
@@ -77,24 +56,11 @@ function MediaCard() {
 
 
 
-function Categories() {
-  return (
-    <div>
-      <br/>
-      <Button
-          variant="contained"
-          color="primary"
-          component={Link}
-          to="/"
-        >
-          Laptops
-        </Button>
 
-
-
-    </div>
-  );
-}
 
 
 export default MediaCard;
+
+
+
+

@@ -8,9 +8,39 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 
 class MediaCard extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      card: {},
+      isLoading: true,
+    };
+  }
+  componentDidMount() {
+    this.getCard();
+  }
+  getCard(){
+    fetch("https://api.youthcomputing.ca/shop/prizes", {
+      method: "GET",
+      mode: "cors",
+
+  })
+    .then((response) => response.json())
+      // ...then we update the users state
+      .then((card) =>
+        this.setState({
+          card: card.prizes,
+          isLoading: false ,
+        })
+      )
+      .catch((error) => {
+        console.error("There was an error!", error);
+      });
+    }
   render() {
     return (
       <div>
+        
         <br />
         <Card className="card">
           <CardActionArea>

@@ -64,9 +64,15 @@
   margin: 50px;
 }
 
+.categories {
+  margin-top: 2vh;
+}
 
+.categoryButton {
+  margin: 10px !important;
+  height: 45px !important;
+}
 
 .cardImg {
   height: auto;
 }
-

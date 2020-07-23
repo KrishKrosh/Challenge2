@@ -21,7 +21,7 @@
   padding-right: 30px;
   position: sticky;
   top: 0;
-  z-index:2;
+  z-index: 2;
 }
 
 .navbarItem {
@@ -75,7 +75,10 @@
   margin: 10px !important;
   height: 45px !important;
   min-width: auto !important;
-  padding: 10px !important;
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+  padding-right: 10px !important;
+  padding-left: 10px !important;
 }
 
 .cardImg {

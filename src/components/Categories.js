@@ -49,7 +49,7 @@ class Categories extends Component {
                 color="secondary"
                 className="categoryButton"
               >
-                {this.state.categories[i]}
+                {this.state.categories[i].replace("_", " ")}
               </Button>
             ))}
           </HorizontalScroller>

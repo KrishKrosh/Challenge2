@@ -13,6 +13,7 @@ class Categories extends Component {
     this.state = {
       categories: {},
       isLoading: true,
+      currentCategory: "",
     };
   }
   componentDidMount() {
@@ -48,8 +49,9 @@ class Categories extends Component {
                 variant="contained"
                 color="secondary"
                 className="categoryButton"
+                onClick={() => this.setState({ currentCategory: item })}
               >
-                {this.state.categories[i].replace("_", " ")}
+                {item.replace("_", " ")}
               </Button>
             ))}
           </HorizontalScroller>

@@ -1,5 +1,4 @@
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
 import "./styles.css";
 import HorizontalScroller from "react-horizontal-scroll-container";
 

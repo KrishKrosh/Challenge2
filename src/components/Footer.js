@@ -1,8 +1,4 @@
 import React from "react";
-import NavBar from "./NavBar.js";
-import Promotions from "./Promotions.js";
-import Categories from "./Categories.js";
-import MediaCard from "./Card.js";
 
 const footerStyle = {
   backgroundColor: "#F50057",

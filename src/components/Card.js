@@ -15,7 +15,8 @@ class MediaCard extends Component {
           <CardActionArea className="cardHover">
             <CardContent>
               <CardMedia component="img" image={this.props.image} />
-              <Typography gutterBottom variant="h5" component="h2">
+              <br />
+              <Typography gutterBottom className="cardName">
                 {this.props.name}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">

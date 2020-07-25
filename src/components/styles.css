@@ -67,12 +67,15 @@
 }
 
 .cardHover {
-  min-height: 530px;
+  height: 60vh;
 }
 .card {
-  min-height: 500px;
+  height: 60vh;
   width: 40vh;
   margin: 50px;
+}
+.cardName {
+  font-size: 1vw !important;
 }
 
 .categories {

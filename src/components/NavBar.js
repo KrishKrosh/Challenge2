@@ -14,6 +14,19 @@ import {
 import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import SearchBar from 'material-ui-search-bar'
+render() ;
+  return(
+    <SearchBar
+      onChange={() => console.log('onChange')}
+      onRequestSearch={() => console.log('onRequestSearch')}
+      style={{
+        margin: '0 auto',
+        maxWidth: 800
+      }}
+    />
+  )
+  
 
 
 const styles = (theme) => ({
@@ -73,4 +86,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default NavBar}

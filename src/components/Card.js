@@ -12,7 +12,7 @@ class MediaCard extends Component {
       <div>
         <br />
         <Card className="card" id={this.props.id}>
-          <CardActionArea>
+          <CardActionArea className="cardHover">
             <CardContent>
               <CardMedia component="img" image={this.props.image} />
               <Typography gutterBottom variant="h5" component="h2">
@@ -21,7 +21,6 @@ class MediaCard extends Component {
               <Typography variant="body2" color="textSecondary" component="p">
                 {this.props.points}
               </Typography>
-              <br />
               <Typography variant="body1" component="h6" className="redeem">
                 Redeem Now
               </Typography>

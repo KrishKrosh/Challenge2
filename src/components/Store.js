@@ -41,13 +41,15 @@ class Store extends Component {
         ) : (
           <div>
             <Categories />
-            {this.state.cards.map((item, i) => (
-              <MediaCard
-                points={item.points + " points"}
-                name={item.name}
-                image={item.image_url}
-              />
-            ))}
+            <div className="store">
+              {this.state.cards.map((item, i) => (
+                <MediaCard
+                  points={item.points + " points"}
+                  name={item.name}
+                  image={item.image_url}
+                />
+              ))}
+            </div>
           </div>
         )}
       </div>

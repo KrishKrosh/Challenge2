@@ -54,16 +54,23 @@
 }
 
 .redeem {
-  text-align: center;
+  text-align: right;
   color: rgb(47, 0, 255);
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  padding: 20px;
 }
 
 *.card :focus {
   outline: none;
 }
 
+.cardHover {
+  min-height: 600px;
+}
 .card {
-  height: auto;
+  min-height: 600px;
   width: 40vh;
   margin: 50px;
 }
@@ -84,4 +91,10 @@
 
 .cardImg {
   height: auto;
+}
+
+.store {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
 }

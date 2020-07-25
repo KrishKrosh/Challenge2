@@ -1,46 +1,58 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
+import React, { Component } from "react";
+import Categories from "./Categories.js";
+import MediaCard from "./Card.js";
+import { CircularProgress } from "@material-ui/core";
+class Store extends Component {
+  constructor() {
+    super();
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 300,
-    height: 300,
-  },
-  media: {
-    height: 200,
-  },
-});
+    this.state = {
+      cards: {},
+      isLoading: true,
+    };
+  }
 
-export default function MediaCard() {
-  const classes = useStyles();
+  componentDidMount() {
+    this.getCards();
+  }
+  getCards() {
+    fetch("https://api.youthcomputing.ca/shop/prizes", {
+      method: "GET",
+      mode: "cors",
+    })
+      .then((response) => response.json())
+      // ...then we update the users state
+      .then((cards) =>
+        this.setState({
+          cards: cards.prizes,
+          isLoading: false,
+        })
+      )
+      .catch((error) => {
+        console.error("There was an error!", error);
+      });
+  }
 
-  return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="https://images.samsung.com/is/image/samsung/ca-uhdtv-nu7090-un50nu6900fxzc-frontblack-115122572?$PD_GALLERY_L_JPG$"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            TV
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            2000 points
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-       
-        
-      </CardActions>
-    </Card>
-  );
+  render() {
+    return (
+      <div>
+        {this.state.isLoading ? (
+          <CircularProgress />
+        ) : (
+          <div>
+            <Categories />
+            {this.state.cards.map((item, i) => (
+              <MediaCard
+                points={item.points + " points"}
+                name={item.name}
+                image={item.image_url}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
 }
+
+export default Store;

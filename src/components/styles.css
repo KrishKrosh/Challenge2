@@ -9,6 +9,29 @@
   align-items: center;
 }
 
+.navbarPaper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 60px;
+  width: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.171);
+}
+
+.navbarItem {
+  width: 200px;
+}
+.navbarSearch {
+  width: 50em;
+}
+
 .right {
   float: right;
   padding-left: 1000;
@@ -28,4 +51,37 @@
   margin-right: 50px;
   margin-top: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.redeem {
+  text-align: center;
+  color: rgb(47, 0, 255);
+}
+
+*.card :focus {
+  outline: none;
+}
+
+.card {
+  height: auto;
+  width: 40vh;
+  margin: 50px;
+}
+
+.categories {
+  margin-top: 2vh;
+}
+
+.categoryButton {
+  margin: 10px !important;
+  height: 45px !important;
+  min-width: auto !important;
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+  padding-right: 30px !important;
+  padding-left: 30px !important;
+}
+
+.cardImg {
+  height: auto;
 }

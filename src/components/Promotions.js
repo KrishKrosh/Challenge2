@@ -42,10 +42,10 @@ class Promotions extends React.Component {
           <Carousel interval={3000} className="carouselWidth">
             {this.shuffle(this.state.promotions).map((item, i) => (
               <Carousel.Item key={i}>
-                <a href={this.state.promotions[i].event_url}>
+                <a href={item.event_url}>
                   <img
                     className={"d-block w-100 carouselImg "}
-                    src={this.state.promotions[i].image_url}
+                    src={item.image_url}
                     alt="First slide"
                   />
                 </a>

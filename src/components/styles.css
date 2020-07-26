@@ -1,3 +1,4 @@
+/* Globals */
 #loader {
   position: fixed;
   top: 0;
@@ -9,6 +10,16 @@
   align-items: center;
 }
 
+*:focus {
+  outline: none !important;
+}
+
+.container {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Navbar */
 .navbarPaper {
   display: flex;
   flex-direction: row;
@@ -36,7 +47,7 @@
   float: right;
   padding-left: 1000;
 }
-
+/* Promotions Banner */
 .carouselImg {
   height: 54vh;
   object-fit: cover;
@@ -53,6 +64,23 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+/* Media Card */
+.card {
+  height: 60vh;
+  width: 40vh;
+  margin: 50px;
+}
+
+.cardImg {
+  height: auto;
+}
+
+.cardHover {
+  height: 60vh;
+}
+.cardName {
+  font-size: 1vw !important;
+}
 .redeem {
   text-align: right;
   color: rgb(47, 0, 255);
@@ -61,30 +89,15 @@
   position: absolute;
   padding: 20px;
 }
-
-*.card :focus {
-  outline: none;
+.store {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  justify-content: center;
+  align-items: center;
 }
 
-Button :focus {
-  outline: none !important;
-}
-
-*:focus {
-  outline: none !important;
-}
-.cardHover {
-  height: 60vh;
-}
-.card {
-  height: 60vh;
-  width: 40vh;
-  margin: 50px;
-}
-.cardName {
-  font-size: 1vw !important;
-}
-
+/* Category Scroll Bar */
 .categories {
   margin-top: 2vh;
 }
@@ -99,25 +112,8 @@ Button :focus {
   padding-left: 30px !important;
 }
 
-.cardImg {
-  height: auto;
-}
-
-.store {
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 0;
-  justify-content: center;
-  align-items: center;
-}
-
 .sort {
   text-align: center;
   display: flex;
   justify-content: center;
-}
-
-.container {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
 }

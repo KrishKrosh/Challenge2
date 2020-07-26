@@ -39,13 +39,6 @@ class Store extends Component {
         console.error("There was an error!", error);
       });
   }
-  hello(obj) {
-    if (this.state.lohi) {
-      return obj.sort((a, b) => parseFloat(a.points) - parseFloat(b.points));
-    } else {
-      return obj.sort((a, b) => parseFloat(b.points) - parseFloat(a.points));
-    }
-  }
 
   render() {
     return (
@@ -54,6 +47,7 @@ class Store extends Component {
           <CircularProgress />
         ) : (
           <div>
+            {/* Categories section */}
             <div className="sort">
               <HorizontalScroller>
                 <Button
@@ -83,35 +77,42 @@ class Store extends Component {
                 <SwapVertIcon fontSize="large" />
               </Button>
             </div>
+
+            {/* Cards/Store Section */}
             <div className="store">
-              {this.state.currentCategory === "all"
-                ? this.hello(this.state.cards).map((item, i) => (
-                    <LazyLoad height={100}>
-                      <MediaCard
-                        key={i}
-                        points={item.points + " points"}
-                        name={item.name}
-                        image={item.image_url}
-                      />
-                    </LazyLoad>
-                  ))
-                : this.hello(this.state.cards)
-                    .filter(
-                      (prize) => prize.category === this.state.currentCategory
-                    )
-                    .map((item, i) => (
-                      <MediaCard
-                        key={i}
-                        points={item.points + " points"}
-                        name={item.name}
-                        image={item.image_url}
-                      />
-                    ))}
+              {this.sort(this.filter(this.state.cards)).map((item, i) => (
+                <LazyLoad height={100}>
+                  <MediaCard
+                    key={i}
+                    points={item.points + " points"}
+                    name={item.name}
+                    image={item.image_url}
+                  />
+                </LazyLoad>
+              ))}
             </div>
           </div>
         )}
       </div>
     );
+  }
+
+  sort(obj) {
+    if (this.state.lohi) {
+      return obj.sort((a, b) => parseFloat(a.points) - parseFloat(b.points));
+    } else {
+      return obj.sort((a, b) => parseFloat(b.points) - parseFloat(a.points));
+    }
+  }
+
+  filter(obj) {
+    if (this.state.currentCategory === "all") {
+      return obj;
+    } else {
+      return obj.filter(
+        (prize) => prize.category === this.state.currentCategory
+      );
+    }
   }
 }
 

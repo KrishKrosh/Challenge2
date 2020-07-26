@@ -10,7 +10,7 @@ class Store extends Component {
       cards: {},
       categories: {},
       isLoading: true,
-      currentCategory: "",
+      currentCategory: "all",
     };
   }
 
@@ -44,6 +44,14 @@ class Store extends Component {
         ) : (
           <div>
             <HorizontalScroller>
+              <Button
+                variant="contained"
+                color="secondary"
+                className="categoryButton"
+                onClick={() => this.setState({ currentCategory: "all" })}
+              >
+                All
+              </Button>
               {this.state.categories.map((item, i) => (
                 <Button
                   key={i}
@@ -57,17 +65,27 @@ class Store extends Component {
               ))}
             </HorizontalScroller>
             <div className="store">
-              {this.state.cards
-                .filter(
-                  (prize) => prize.category === this.state.currentCategory
-                )
-                .map((item, i) => (
-                  <MediaCard
-                    points={item.points + " points"}
-                    name={item.name}
-                    image={item.image_url}
-                  />
-                ))}
+              {this.state.currentCategory === "all"
+                ? this.state.cards.map((item, i) => (
+                    <MediaCard
+                      key={i}
+                      points={item.points + " points"}
+                      name={item.name}
+                      image={item.image_url}
+                    />
+                  ))
+                : this.state.cards
+                    .filter(
+                      (prize) => prize.category === this.state.currentCategory
+                    )
+                    .map((item, i) => (
+                      <MediaCard
+                        key={i}
+                        points={item.points + " points"}
+                        name={item.name}
+                        image={item.image_url}
+                      />
+                    ))}
             </div>
           </div>
         )}

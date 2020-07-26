@@ -6,8 +6,8 @@ import SwapVertIcon from "@material-ui/icons/SwapVert";
 import LazyLoad from "react-lazyload";
 
 class Store extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       cards: {},
@@ -80,16 +80,18 @@ class Store extends Component {
 
             {/* Cards/Store Section */}
             <div className="store">
-              {this.sort(this.filter(this.state.cards)).map((item, i) => (
-                <LazyLoad height={100}>
-                  <MediaCard
-                    key={i}
-                    points={item.points + " points"}
-                    name={item.name}
-                    image={item.image_url}
-                  />
-                </LazyLoad>
-              ))}
+              {this.sort(this.search(this.filter(this.state.cards))).map(
+                (item, i) => (
+                  <LazyLoad height={100}>
+                    <MediaCard
+                      key={i}
+                      points={item.points + " points"}
+                      name={item.name}
+                      image={item.image_url}
+                    />
+                  </LazyLoad>
+                )
+              )}
             </div>
           </div>
         )}
@@ -111,6 +113,16 @@ class Store extends Component {
     } else {
       return obj.filter(
         (prize) => prize.category === this.state.currentCategory
+      );
+    }
+  }
+
+  search(obj) {
+    if (this.props.searchTerm == "") {
+      return obj;
+    } else {
+      return obj.filter((prize) =>
+        prize.name.toLowerCase().includes(this.props.searchTerm.toLowerCase())
       );
     }
   }

@@ -3,7 +3,7 @@ import { CircularProgress } from "@material-ui/core";
 import Carousel from "react-bootstrap/Carousel";
 import "./styles.css";
 
-class Promotions extends React.Component {
+class Promotions extends React.PureComponent {
   constructor() {
     super();
 

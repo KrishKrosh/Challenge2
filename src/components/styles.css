@@ -66,6 +66,13 @@
   outline: none;
 }
 
+Button :focus {
+  outline: none !important;
+}
+
+*:focus {
+  outline: none !important;
+}
 .cardHover {
   height: 60vh;
 }
@@ -102,4 +109,15 @@
   padding-left: 0;
   justify-content: center;
   align-items: center;
+}
+
+.sort {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }

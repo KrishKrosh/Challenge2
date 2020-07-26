@@ -44,7 +44,9 @@ class Store extends Component {
     return (
       <div>
         {this.state.isLoading ? (
-          <CircularProgress />
+          <div className="loader">
+            <CircularProgress />
+          </div>
         ) : (
           <div>
             {/* Categories section */}
@@ -118,7 +120,7 @@ class Store extends Component {
   }
 
   search(obj) {
-    if (this.props.searchTerm == "") {
+    if (this.props.searchTerm === "") {
       return obj;
     } else {
       return obj.filter((prize) =>

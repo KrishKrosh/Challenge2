@@ -37,7 +37,9 @@ class Promotions extends React.PureComponent {
     return (
       <React.Fragment>
         {this.state.isLoading ? (
-          <CircularProgress />
+          <div className="loader">
+            <CircularProgress />
+          </div>
         ) : (
           <Carousel interval={3000} className="carouselWidth">
             {this.shuffle(this.state.promotions).map((item, i) => (

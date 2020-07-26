@@ -15,7 +15,7 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="background">
         <NavBar onChange={(value) => this.setState({ search: value })} />
         <Promotions />
         <Store searchTerm={this.state.search} />

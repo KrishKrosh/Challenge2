@@ -9,6 +9,12 @@
   justify-content: center;
   align-items: center;
 }
+.loader {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 50px;
+}
 
 *:focus {
   outline: none !important;
@@ -17,6 +23,25 @@
 .container {
   margin-left: 0 !important;
   margin-right: 0 !important;
+  max-width: 80vw !important;
+}
+
+.background {
+  background-image: linear-gradient(to bottom right, #ffecd2, #fcb69f);
+}
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: darkgrey;
 }
 
 /* Navbar */
@@ -41,6 +66,31 @@
 }
 .navbarSearch {
   width: 50em;
+}
+.loggedInNavBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loggedInNavBarItem {
+  margin-right: 40px !important;
+}
+.loggedInNavBarItem2 {
+  margin-right: 10px !important;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.loggedInNavBarItem3 {
+  background-color: #fcb69f !important;
+  font-size: 0.8em !important;
+}
+
+.loggedInNavBarItem2:hover {
+  text-decoration: underline !important;
 }
 
 .right {
@@ -95,18 +145,17 @@
   padding-left: 0;
   justify-content: center;
   align-items: center;
+  margin-top: -20px;
 }
 
 /* Category Scroll Bar */
-.categories {
-  margin-top: 2vh;
-}
 
 .categoryButton {
   margin: 10px !important;
   height: 45px !important;
   min-width: auto !important;
   padding-top: 30px !important;
+  font-family: Verdana, Geneva, sans-serif !important;
   padding-bottom: 30px !important;
   padding-right: 30px !important;
   padding-left: 30px !important;
@@ -116,4 +165,5 @@
   text-align: center;
   display: flex;
   justify-content: center;
+  margin-top: 3vh;
 }

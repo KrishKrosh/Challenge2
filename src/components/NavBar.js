@@ -28,106 +28,98 @@ class NavBar extends Component {
       isLoading: true,
       anchorEl: null,
       open: false,
-      // confirm: false,
-      userInfo: {},
     };
   }
 
   createNavbar() {
     if (this.props.uid !== null) {
-      this.getUserInfo();
       return (
         <React.Fragment>
-          {this.state.isLoading ? (
-            <CircularProgress />
-          ) : (
-            <Paper elevation={0.5} className="navbarPaper">
-              <Typography component="h5" variant="h4">
-                YC Store
-              </Typography>
-              <TextField
-                className="navbarSearch"
-                onChange={(e) => this.props.onChange(e.target.value)}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
-                }}
-              />
+          <Paper elevation={0.5} className="navbarPaper">
+            <Typography component="h5" variant="h4">
+              YC Store
+            </Typography>
+            <TextField
+              className="navbarSearch"
+              onChange={(e) => this.props.onChange(e.target.value)}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }}
+            />
 
-              <div className="loggedInNavBar">
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="secondary"
-                  className="loggedInNavBarItem"
-                  onClick={() => this.setState({ open: true })}
-                >
-                  Redeem Event
-                </Button>
-                <Dialog 
-                  open={this.state.open}
-                  onClose={() => this.setState({ open: false})} 
-                  aria-labelledby="form-dialog-title">
-        <DialogTitle 
-          id="form-dialog-title">
-            Redeem Event
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Enter your code.
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Redeem Code"
-            type="code"
-            fullWidth
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button 
-            onClick={() => this.setState({ open: false })} 
-            color="primary">
-            Cancel
-          </Button>
-          <Button 
-            // onClick={() => this.setState({ confirm: true })}
-            onClick={() => this.setState({ open: false, confirm: true })} 
-            color="primary">
-            Submit
-          </Button>
-          
-        </DialogActions>
-      </Dialog>
-                <Avatar className="loggedInNavBarItem3">
-                  {this.state.userInfo.points}
-                </Avatar>
-                <h5
-                  className="loggedInNavBarItem2"
-                  aria-controls="simple-menu"
-                  aria-haspopup="true"
-                  onClick={(event) =>
-                    this.setState({ anchorEl: event.currentTarget })
-                  }
-                >
-                  {this.state.userInfo.name}
-                </h5>{" "}
-              </div>
-              <Menu
-                id="simple-menu"
-                anchorEl={this.state.anchorEl}
-                keepMounted
-                open={Boolean(this.state.anchorEl)}
-                onClose={() => this.setState({ anchorEl: null })}
+            <div className="loggedInNavBar">
+              <Button
+                type="submit"
+                variant="contained"
+                color="secondary"
+                className="loggedInNavBarItem"
+                onClick={() => this.setState({ open: true })}
               >
-                <MenuItem onClick={() => this.logout()}>Logout</MenuItem>
-              </Menu>
-            </Paper>
-          )}
+                Redeem Event
+              </Button>
+              <Dialog
+                open={this.state.open}
+                onClose={() => this.setState({ open: false })}
+                aria-labelledby="form-dialog-title"
+              >
+                <DialogTitle id="form-dialog-title">Redeem Event</DialogTitle>
+                <DialogContent>
+                  <DialogContentText>Enter your code.</DialogContentText>
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="name"
+                    label="Redeem Code"
+                    type="code"
+                    fullWidth
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <Button
+                    onClick={() => this.setState({ open: false })}
+                    color="primary"
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    // onClick={() => this.setState({ confirm: true })}
+                    onClick={() =>
+                      this.setState({ open: false, confirm: true })
+                    }
+                    color="primary"
+                  >
+                    Submit
+                  </Button>
+                </DialogActions>
+              </Dialog>
+              <Avatar className="loggedInNavBarItem3">
+                {this.props.userInfo.points}
+              </Avatar>
+              <h5
+                className="loggedInNavBarItem2"
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={(event) =>
+                  this.setState({ anchorEl: event.currentTarget })
+                }
+              >
+                {this.props.userInfo.name}
+              </h5>{" "}
+            </div>
+            <Menu
+              id="simple-menu"
+              anchorEl={this.state.anchorEl}
+              keepMounted
+              open={Boolean(this.state.anchorEl)}
+              onClose={() => this.setState({ anchorEl: null })}
+            >
+              <MenuItem onClick={() => this.logout()}>Logout</MenuItem>
+            </Menu>
+          </Paper>
         </React.Fragment>
       );
     } else {
@@ -164,24 +156,6 @@ class NavBar extends Component {
 
   render() {
     return <React.Fragment>{this.createNavbar()}</React.Fragment>;
-  }
-
-  getUserInfo() {
-    fetch("https://api.youthcomputing.ca/users/" + this.props.uid, {
-      method: "GET",
-      mode: "cors",
-    })
-      .then((response) => response.json())
-      // ...then we update the users state
-      .then((info) =>
-        this.setState({
-          userInfo: info.userData,
-          isLoading: false,
-        })
-      )
-      .catch((error) => {
-        console.error("There was an error!", error);
-      });
   }
 
   logout() {

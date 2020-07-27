@@ -16,10 +16,7 @@ class Promotions extends React.PureComponent {
     this.getPromotions();
   }
   getPromotions() {
-    fetch("https://api.youthcomputing.ca/shop/promotions", {
-      method: "GET",
-      mode: "cors",
-    })
+    fetch("https://api.youthcomputing.ca/shop/promotions")
       .then((response) => response.json())
       // ...then we update the users state
       .then((promotions) =>

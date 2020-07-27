@@ -23,10 +23,7 @@ class Store extends Component {
     this.getCards();
   }
   getCards() {
-    fetch("https://api.youthcomputing.ca/shop/prizes", {
-      method: "GET",
-      
-    })
+    fetch("https://api.youthcomputing.ca/shop/prizes")
       .then((response) => response.json())
       // ...then we update the users state
       .then((cards) =>

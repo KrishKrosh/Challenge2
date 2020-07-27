@@ -17,6 +17,7 @@ class Store extends Component {
       lohi: false,
       rawCards:[],
     };
+    this.addCards=this.addCards.bind(this)
   }
 
   componentDidMount() {
@@ -42,6 +43,17 @@ class Store extends Component {
   }
   addCards(){
     console.log("adding more cards")
+    var newCards= this.state.cards;
+    var rawCards= this.state.rawCards;
+    var diff = rawCards.length - newCards.length
+    if(diff > 0){
+      if(diff >= 5){
+        this.setState({cards:rawCards.slice(0,newCards.length + 5)})
+      }
+      else{
+        this.setState({cards: rawCards})
+      }
+    }
   }
   render() {
     return (
@@ -88,14 +100,16 @@ class Store extends Component {
               {this.sort(this.search(this.filter(this.state.cards))).map(
                 (item, i) => {
                   if (i == this.state.cards.length-1) {
-                    return (<Waypoint onEnter={this.addCards}>
+                    return (
+                     <React.Fragment>
                      <MediaCard
                     key={i}
                     points={item.points + " points"}
                     name={item.name}
                     image={item.image_url}
-                  />
-                    </Waypoint>)
+                  /><Waypoint onEnter={this.addCards}></Waypoint>
+                  </React.Fragment>
+                    )
                   } 
                   else{
                     return <MediaCard

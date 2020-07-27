@@ -105,6 +105,8 @@ class Store extends Component {
                           name={item.name}
                           image={item.image_url}
                           isLoggedIn={this.props.isLoggedIn}
+                          prizeID={item.id}
+                          userPoints={this.props.userInfo}
                         />
                         <Waypoint onEnter={this.addCards}></Waypoint>
                       </React.Fragment>
@@ -116,6 +118,9 @@ class Store extends Component {
                         points={item.points + " points"}
                         name={item.name}
                         image={item.image_url}
+                        isLoggedIn={this.props.isLoggedIn}
+                        prizeID={item.id}
+                        userPoints={this.props.userInfo}
                       />
                     );
                   }

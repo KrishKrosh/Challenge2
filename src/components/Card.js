@@ -22,12 +22,14 @@ class MediaCard extends Component {
     this.state = {
       open: false,
       confirm: false,
-      response: { error: true },
+      response: { error: false },
     };
   }
 
   redeemPrize() {
     console.log(this.props.prizeID);
+
+    console.log(this.props.isLoggedIn);
     fetch("https://api.youthcomputing.ca/shop/redeem/prize", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -50,6 +52,10 @@ class MediaCard extends Component {
         console.error("There was an error!", error);
       });
     this.setState({ open: false, confirm: true });
+  }
+
+  pointsNeeded() {
+    return parseInt(this.props.points) - parseInt(this.props.userPoints.points);
   }
   successDialog() {
     if (!this.state.response.error) {
@@ -78,7 +84,7 @@ class MediaCard extends Component {
           aria-labelledby="form-dialog-title"
         >
           <DialogTitle id="form-dialog-title">
-            {this.state.response.message}
+            You need {this.pointsNeeded()} more points
           </DialogTitle>
           <DialogActions>
             <Button

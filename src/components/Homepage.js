@@ -64,6 +64,7 @@ class HomePage extends Component {
             <Store
               searchTerm={this.state.search}
               isLoggedIn={this.state.user}
+              userInfo={this.state.userInfo}
             />
             <Footer />
           </div>

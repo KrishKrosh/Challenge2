@@ -25,11 +25,13 @@ class MediaCard extends Component {
     this.state = {
       open: false,
       confirm: false,
+      response: null,
     };
   }
 
   redeemPrize() {
-    fetch("https://api.youthcomputing.ca/redeem/prize", {
+    console.log(this.props.isLoggedIn);
+    fetch("https://api.youthcomputing.ca/shop/redeem/prize", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       cache: "no-cache",
@@ -40,15 +42,17 @@ class MediaCard extends Component {
     })
       .then((response) => response.json())
       // ...then we update the users state
-      .then((promotions) =>
-        this.setState({
-          promotions: promotions.promotions,
-          isLoading: false,
-        })
+      .then(
+        (obj) =>
+          this.setState({
+            response: obj,
+          }),
+        console.log(this.state.response)
       )
       .catch((error) => {
         console.error("There was an error!", error);
       });
+    this.setState({ open: false, confirm: true });
   }
 
   createCard() {
@@ -98,7 +102,7 @@ class MediaCard extends Component {
                 No
               </Button>
               <Button
-                onClick={() => this.setState({ open: false, confirm: true })}
+                onClick={() => this.redeemPrize()}
                 color="primary"
                 autoFocus
               >

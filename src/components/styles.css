@@ -27,7 +27,7 @@
 }
 
 .background {
-  background-image: linear-gradient(to bottom right, #ffecd2, #fcb69f);
+  background-image: linear-gradient(to bottom right, #ffecd2, lightblue);
 }
 /* Scrollbar styles */
 ::-webkit-scrollbar {

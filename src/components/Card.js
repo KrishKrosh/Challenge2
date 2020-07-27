@@ -15,8 +15,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-//<Link component={RouterLink} to='/login'></Link>
-//</Link>
+
 
 class MediaCard extends Component {
   constructor(props) {

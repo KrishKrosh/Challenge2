@@ -86,7 +86,7 @@ class NavBar extends Component {
                     Cancel
                   </Button>
                   <Button
-                    // onClick={() => this.setState({ confirm: true })}
+                   
                     onClick={() =>
                       this.setState({ open: false, confirm: true })
                     }

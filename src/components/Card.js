@@ -27,9 +27,6 @@ class MediaCard extends Component {
   }
 
   redeemPrize() {
-    console.log(this.props.prizeID);
-
-    console.log(this.props.isLoggedIn);
     fetch("https://api.youthcomputing.ca/shop/redeem/prize", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },

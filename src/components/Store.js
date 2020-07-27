@@ -33,7 +33,7 @@ class Store extends Component {
           categories: [...new Set(cards.prizes.map((x) => x.category))],
           isLoading: false,
           cards: cards.prizes.slice(
-            0,5
+            0,6
           ),
         })
       )
@@ -47,8 +47,8 @@ class Store extends Component {
     var rawCards= this.state.rawCards;
     var diff = rawCards.length - newCards.length
     if(diff > 0){
-      if(diff >= 5){
-        this.setState({cards:rawCards.slice(0,newCards.length + 5)})
+      if(diff >= 3){
+        this.setState({cards:rawCards.slice(0,newCards.length + 3)})
       }
       else{
         this.setState({cards: rawCards})

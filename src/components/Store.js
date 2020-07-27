@@ -3,18 +3,19 @@ import MediaCard from "./Card.js";
 import { CircularProgress, Button } from "@material-ui/core";
 import HorizontalScroller from "react-horizontal-scroll-container";
 import SwapVertIcon from "@material-ui/icons/SwapVert";
-import LazyLoad from "react-lazyload";
+import { Waypoint } from 'react-waypoint';
 
 class Store extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      cards: {},
+      cards: [],
       categories: {},
       isLoading: true,
       currentCategory: "all",
       lohi: false,
+      rawCards:[],
     };
   }
 
@@ -24,22 +25,27 @@ class Store extends Component {
   getCards() {
     fetch("https://api.youthcomputing.ca/shop/prizes", {
       method: "GET",
-      mode: "cors",
+      
     })
       .then((response) => response.json())
       // ...then we update the users state
       .then((cards) =>
         this.setState({
-          cards: cards.prizes,
+          rawCards: cards.prizes,
           categories: [...new Set(cards.prizes.map((x) => x.category))],
           isLoading: false,
+          cards: cards.prizes.slice(
+            0,5
+          ),
         })
       )
       .catch((error) => {
         console.error("There was an error!", error);
       });
   }
-
+  addCards(){
+    console.log("adding more cards")
+  }
   render() {
     return (
       <div>
@@ -83,16 +89,28 @@ class Store extends Component {
             {/* Cards/Store Section */}
             <div className="store">
               {this.sort(this.search(this.filter(this.state.cards))).map(
-                (item, i) => (
-                  <LazyLoad height={200} offset={0}>
-                    <MediaCard
-                      key={i}
-                      points={item.points + " points"}
-                      name={item.name}
-                      image={item.image_url}
-                    />
-                  </LazyLoad>
-                )
+                (item, i) => {
+                  if (i == this.state.cards.length-1) {
+                    return (<Waypoint onEnter={this.addCards}>
+                     <MediaCard
+                    key={i}
+                    points={item.points + " points"}
+                    name={item.name}
+                    image={item.image_url}
+                  />
+                    </Waypoint>)
+                  } 
+                  else{
+                    return <MediaCard
+                    key={i}
+                    points={item.points + " points"}
+                    name={item.name}
+                    image={item.image_url}
+                  />
+                  }
+                    
+                  
+                }
               )}
             </div>
           </div>

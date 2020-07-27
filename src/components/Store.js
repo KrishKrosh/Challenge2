@@ -22,10 +22,7 @@ class Store extends Component {
     this.getCards();
   }
   getCards() {
-    fetch("https://api.youthcomputing.ca/shop/prizes", {
-      method: "GET",
-      mode: "cors",
-    })
+    fetch("https://api.youthcomputing.ca/shop/prizes")
       .then((response) => response.json())
       // ...then we update the users state
       .then((cards) =>
@@ -90,6 +87,9 @@ class Store extends Component {
                       points={item.points + " points"}
                       name={item.name}
                       image={item.image_url}
+                      prizeID={item.id}
+                      category={"Category: " + item.category.replace("_", " ")}
+                      isLoggedIn={this.props.isLoggedIn}
                     />
                   </LazyLoad>
                 )

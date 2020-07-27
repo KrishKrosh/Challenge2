@@ -35,10 +35,14 @@ class HomePage extends Component {
 
   componentDidMount() {
     (async () => {
-      var user = await firebase.isLoggedIn();
-      if (user !== null) {
-        this.setState({ user: user.uid });
-        this.getUserInfo(user.uid);
+      try {
+        var user = await firebase.isLoggedIn();
+        if (user !== null) {
+          this.setState({ user: user.uid });
+          this.getUserInfo(user.uid);
+        }
+      } catch (error) {
+        this.setState({ isLoading: false });
       }
     })();
   }

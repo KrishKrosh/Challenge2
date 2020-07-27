@@ -9,7 +9,11 @@ import {
   Menu,
   MenuItem,
 } from "@material-ui/core";
-
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 import SearchIcon from "@material-ui/icons/Search";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
@@ -23,6 +27,8 @@ class NavBar extends Component {
       isLoggedIn: true,
       isLoading: true,
       anchorEl: null,
+      open: false,
+      // confirm: false,
     };
   }
 
@@ -55,6 +61,7 @@ class NavBar extends Component {
                   variant="contained"
                   color="secondary"
                   className="loggedInNavBarItem"
+                  onClick={() => this.setState({ open: true })}
                 >
                   Redeem Event
                 </Button>

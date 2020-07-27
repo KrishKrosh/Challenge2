@@ -84,7 +84,7 @@ class Store extends Component {
             <div className="store">
               {this.sort(this.search(this.filter(this.state.cards))).map(
                 (item, i) => (
-                  <LazyLoad height={100}>
+                  <LazyLoad height={200} offset={0}>
                     <MediaCard
                       key={i}
                       points={item.points + " points"}

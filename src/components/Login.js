@@ -129,8 +129,7 @@ function SignIn(props) {
   async function login() {
     try {
       await firebase.login(email, password);
-      props.history.replace("/dashboard");
-      firebase.getUid();
+      props.history.replace("/");
     } catch (error) {
       setErrorMessage(error.message);
       alert(error.message);

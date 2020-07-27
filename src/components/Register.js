@@ -129,7 +129,6 @@ function Register(props) {
   async function onRegister() {
     try {
       await firebase.register(name, email, password);
-      firebase.getUid();
       props.history.replace("/");
     } catch (error) {
       alert(error.message);

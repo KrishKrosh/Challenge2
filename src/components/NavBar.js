@@ -14,23 +14,25 @@ import SearchIcon from "@material-ui/icons/Search";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import firebase from "../firebase.js";
 
 class NavBar extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      isLoggedIn: true,
       isLoading: true,
       anchorEl: null,
+      userInfo: {},
     };
   }
 
   createNavbar() {
-    if (this.state.isLoggedIn) {
+    if (this.props.uid !== null) {
+      this.getUserInfo();
       return (
         <React.Fragment>
-          {this.state.isloading ? (
+          {this.state.isLoading ? (
             <CircularProgress />
           ) : (
             <Paper elevation={0.5} className="navbarPaper">
@@ -58,7 +60,9 @@ class NavBar extends Component {
                 >
                   Redeem Event
                 </Button>
-                <Avatar className="loggedInNavBarItem3">999999</Avatar>
+                <Avatar className="loggedInNavBarItem3">
+                  {this.state.userInfo.points}
+                </Avatar>
                 <h5
                   className="loggedInNavBarItem2"
                   aria-controls="simple-menu"
@@ -67,7 +71,7 @@ class NavBar extends Component {
                     this.setState({ anchorEl: event.currentTarget })
                   }
                 >
-                  Name Here
+                  {this.state.userInfo.name}
                 </h5>{" "}
               </div>
               <Menu
@@ -77,9 +81,7 @@ class NavBar extends Component {
                 open={Boolean(this.state.anchorEl)}
                 onClose={() => this.setState({ anchorEl: null })}
               >
-                <MenuItem onClick={() => this.setState({ anchorEl: null })}>
-                  Logout
-                </MenuItem>
+                <MenuItem onClick={() => this.logout()}>Logout</MenuItem>
               </Menu>
             </Paper>
           )}
@@ -116,8 +118,33 @@ class NavBar extends Component {
       );
     }
   }
+
   render() {
     return <React.Fragment>{this.createNavbar()}</React.Fragment>;
+  }
+
+  getUserInfo() {
+    fetch("https://api.youthcomputing.ca/users/" + this.props.uid, {
+      method: "GET",
+      mode: "cors",
+    })
+      .then((response) => response.json())
+      // ...then we update the users state
+      .then((info) =>
+        this.setState({
+          userInfo: info.userData,
+          isLoading: false,
+        })
+      )
+      .catch((error) => {
+        console.error("There was an error!", error);
+      });
+  }
+
+  logout() {
+    firebase.logout();
+    this.props.onLogout();
+    this.setState({ anchorEl: null });
   }
 }
 

@@ -15,8 +15,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-
-
 class MediaCard extends Component {
   constructor(props) {
     super(props);
@@ -53,7 +51,6 @@ class MediaCard extends Component {
       });
     this.setState({ open: false, confirm: true });
   }
-
   successDialog() {
     if (!this.state.response.error) {
       return (
@@ -95,7 +92,6 @@ class MediaCard extends Component {
       );
     }
   }
-
   createCard() {
     if (this.props.isLoggedIn !== null) {
       return (
@@ -179,7 +175,7 @@ class MediaCard extends Component {
               </Button>
             </DialogActions>
           </Dialog>
-          {this.redeemPrize()}
+          {this.successDialog()}
         </div>
       );
     } else {

@@ -117,7 +117,7 @@ function SignIn(props) {
           variant="contained"
           color="secondary"
           component={Link}
-          to="/"
+          to="/register"
           className={classes.submit}
         >
           Register Here

@@ -4,7 +4,6 @@ import {
   Button,
   TextField,
   InputAdornment,
-  CircularProgress,
   Avatar,
   Menu,
   MenuItem,
@@ -28,9 +27,79 @@ class NavBar extends Component {
       isLoading: true,
       anchorEl: null,
       open: false,
+      confirm: false,
+      value: "",
+      response: { error: true },
+      reload: false,
     };
   }
 
+  redeemEvent() {
+    fetch("https://api.youthcomputing.ca/shop/redeem/event", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      cache: "no-cache",
+      body: JSON.stringify({
+        userId: this.props.uid,
+        eventCode: this.state.value,
+      }),
+    })
+      .then((response) => response.json())
+      // ...then we update the users state
+      .then(
+        (obj) =>
+          this.setState({
+            response: obj,
+          }),
+        console.log(this.state.response)
+      )
+      .catch((error) => {
+        console.error("There was an error!", error);
+      });
+    this.setState({ open: false, confirm: true });
+  }
+
+  successDialog() {
+    if (!this.state.response.error) {
+      return (
+        <Dialog
+          open={this.state.confirm}
+          onClose={() => this.setState({ confirm: false })}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">Success!</DialogTitle>
+          <DialogActions>
+            <Button
+              onClick={() => window.location.reload(false)}
+              color="primary"
+            >
+              Continue
+            </Button>
+          </DialogActions>
+        </Dialog>
+      );
+    } else {
+      return (
+        <Dialog
+          open={this.state.confirm}
+          onClose={() => this.setState({ confirm: false })}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">
+            {this.state.response.message}
+          </DialogTitle>
+          <DialogActions>
+            <Button
+              onClick={() => this.setState({ confirm: false })}
+              color="primary"
+            >
+              Continue
+            </Button>
+          </DialogActions>
+        </Dialog>
+      );
+    }
+  }
   createNavbar() {
     if (this.props.uid !== null) {
       return (
@@ -76,6 +145,11 @@ class NavBar extends Component {
                     label="Redeem Code"
                     type="code"
                     fullWidth
+                    onChange={(event) => {
+                      this.setState({
+                        value: event.target.value,
+                      });
+                    }}
                   />
                 </DialogContent>
                 <DialogActions>
@@ -87,15 +161,14 @@ class NavBar extends Component {
                   </Button>
                   <Button
                     // onClick={() => this.setState({ confirm: true })}
-                    onClick={() =>
-                      this.setState({ open: false, confirm: true })
-                    }
+                    onClick={() => this.redeemEvent()}
                     color="primary"
                   >
                     Submit
                   </Button>
                 </DialogActions>
               </Dialog>
+              {this.successDialog()}
               <Avatar className="loggedInNavBarItem3">
                 {this.props.userInfo.points}
               </Avatar>

@@ -25,19 +25,19 @@ class MediaCard extends Component {
     this.state = {
       open: false,
       confirm: false,
-      response: null,
+      response: { error: true },
     };
   }
 
   redeemPrize() {
-    console.log(this.props.isLoggedIn);
+    console.log(this.props.prizeID);
     fetch("https://api.youthcomputing.ca/shop/redeem/prize", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       cache: "no-cache",
       body: JSON.stringify({
         userId: this.props.isLoggedIn,
-        prizeID: this.props.prizeID,
+        prizeId: this.props.prizeID,
       }),
     })
       .then((response) => response.json())
@@ -53,6 +53,48 @@ class MediaCard extends Component {
         console.error("There was an error!", error);
       });
     this.setState({ open: false, confirm: true });
+  }
+
+  successDialog() {
+    if (!this.state.response.error) {
+      return (
+        <Dialog
+          open={this.state.confirm}
+          onClose={() => this.setState({ confirm: false })}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">Success!</DialogTitle>
+          <DialogActions>
+            <Button
+              onClick={() => window.location.reload(false)}
+              color="primary"
+            >
+              Continue
+            </Button>
+          </DialogActions>
+        </Dialog>
+      );
+    } else {
+      return (
+        <Dialog
+          open={this.state.confirm}
+          onClose={() => this.setState({ confirm: false })}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">
+            {this.state.response.message}
+          </DialogTitle>
+          <DialogActions>
+            <Button
+              onClick={() => this.setState({ confirm: false })}
+              color="primary"
+            >
+              Continue
+            </Button>
+          </DialogActions>
+        </Dialog>
+      );
+    }
   }
 
   createCard() {
@@ -138,6 +180,7 @@ class MediaCard extends Component {
               </Button>
             </DialogActions>
           </Dialog>
+          {this.redeemPrize()}
         </div>
       );
     } else {

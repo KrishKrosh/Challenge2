@@ -58,6 +58,42 @@ class NavBar extends Component {
                 >
                   Redeem Event
                 </Button>
+                <Dialog 
+                  open={this.state.open}
+                  onClose={() => this.setState({ open: false})} 
+                  aria-labelledby="form-dialog-title">
+        <DialogTitle 
+          id="form-dialog-title">
+            Redeem Event
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Enter your code.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Redeem Code"
+            type="code"
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button 
+            onClick={() => this.setState({ open: false })} 
+            color="primary">
+            Cancel
+          </Button>
+          <Button 
+            // onClick={() => this.setState({ confirm: true })}
+            onClick={() => this.setState({ open: false, confirm: true })} 
+            color="primary">
+            Submit
+          </Button>
+          
+        </DialogActions>
+      </Dialog>
                 <Avatar className="loggedInNavBarItem3">999999</Avatar>
                 <h5
                   className="loggedInNavBarItem2"

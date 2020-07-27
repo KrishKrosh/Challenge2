@@ -3,7 +3,7 @@ import "firebase/auth";
 import "firebase/firebase-firestore";
 
 const config = {
-  apiKey: "AIzaSyCqsl1lzlzJOShiCkqQU50ZHcBIpVcv2ds",
+  apiKey: "Api here",
   projectId: " ",
 };
 

@@ -3,7 +3,7 @@ import MediaCard from "./Card.js";
 import { CircularProgress, Button } from "@material-ui/core";
 import HorizontalScroller from "react-horizontal-scroll-container";
 import SwapVertIcon from "@material-ui/icons/SwapVert";
-import { Waypoint } from 'react-waypoint';
+import { Waypoint } from "react-waypoint";
 
 class Store extends Component {
   constructor(props) {
@@ -15,9 +15,9 @@ class Store extends Component {
       isLoading: true,
       currentCategory: "all",
       lohi: false,
-      rawCards:[],
+      rawCards: [],
     };
-    this.addCards=this.addCards.bind(this)
+    this.addCards = this.addCards.bind(this);
   }
 
   componentDidMount() {
@@ -32,26 +32,23 @@ class Store extends Component {
           rawCards: cards.prizes,
           categories: [...new Set(cards.prizes.map((x) => x.category))],
           isLoading: false,
-          cards: cards.prizes.slice(
-            0,6
-          ),
+          cards: cards.prizes.slice(0, 6),
         })
       )
       .catch((error) => {
         console.error("There was an error!", error);
       });
   }
-  addCards(){
-    console.log("adding more cards")
-    var newCards= this.state.cards;
-    var rawCards= this.state.rawCards;
-    var diff = rawCards.length - newCards.length
-    if(diff > 0){
-      if(diff >= 3){
-        this.setState({cards:rawCards.slice(0,newCards.length + 3)})
-      }
-      else{
-        this.setState({cards: rawCards})
+  addCards() {
+    console.log("adding more cards");
+    var newCards = this.state.cards;
+    var rawCards = this.state.rawCards;
+    var diff = rawCards.length - newCards.length;
+    if (diff > 0) {
+      if (diff >= 3) {
+        this.setState({ cards: rawCards.slice(0, newCards.length + 3) });
+      } else {
+        this.setState({ cards: rawCards });
       }
     }
   }
@@ -99,28 +96,29 @@ class Store extends Component {
             <div className="store">
               {this.sort(this.search(this.filter(this.state.cards))).map(
                 (item, i) => {
-                  if (i == this.state.cards.length-1) {
+                  if (i == this.state.cards.length - 1) {
                     return (
-                     <React.Fragment>
-                     <MediaCard
-                    key={i}
-                    points={item.points + " points"}
-                    name={item.name}
-                    image={item.image_url}
-                  /><Waypoint onEnter={this.addCards}></Waypoint>
-                  </React.Fragment>
-                    )
-                  } 
-                  else{
-                    return <MediaCard
-                    key={i}
-                    points={item.points + " points"}
-                    name={item.name}
-                    image={item.image_url}
-                  />
+                      <React.Fragment>
+                        <MediaCard
+                          key={i}
+                          points={item.points + " points"}
+                          name={item.name}
+                          image={item.image_url}
+                          isLoggedIn={this.props.isLoggedIn}
+                        />
+                        <Waypoint onEnter={this.addCards}></Waypoint>
+                      </React.Fragment>
+                    );
+                  } else {
+                    return (
+                      <MediaCard
+                        key={i}
+                        points={item.points + " points"}
+                        name={item.name}
+                        image={item.image_url}
+                      />
+                    );
                   }
-                    
-                  
                 }
               )}
             </div>

@@ -59,12 +59,27 @@ class Firebase {
     });
   }
 
+  async isLoggedIn() {
+    var that = this;
+    return new Promise(function (resolve, reject) {
+      that.auth.onAuthStateChanged(function (user) {
+        if (user) {
+          console.log("signed in");
+          resolve(user);
+        } else {
+          console.log("signed out");
+          reject(null);
+        }
+      });
+    });
+  }
+
   getCurrentUsername() {
     return this.auth.currentUser && this.auth.currentUser.displayName;
   }
 
   getUid() {
-    console.log(this.auth.currentUser.uid);
+    return this.auth.currentUser.uid;
   }
 }
 
